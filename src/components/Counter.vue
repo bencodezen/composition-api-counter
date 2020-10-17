@@ -24,10 +24,15 @@ export default {
       currentCount.value += changeCountAmount.value;
     };
 
+    const resetCount = () => {
+      currentCount.value = 0;
+    };
+
     return {
       changeCountAmount,
       currentCount,
-      incrementCount
+      incrementCount,
+      resetCount
     };
   }
 };
@@ -49,6 +54,7 @@ export default {
       />
     </form>
     <button @click="incrementCount">Increment Count</button>
+    <button @click="resetCount">Reset Count</button>
   </section>
 </template>
 
