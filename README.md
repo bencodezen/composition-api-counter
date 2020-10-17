@@ -4,7 +4,7 @@
 
 - [x] User can see an empty state
 - [x] User can add a new counter
-- [ ] User can set a name for the counter
+- [x] User can set a name for the counter
 - [ ] User can increment the counter by 1
 - [ ] User can determine the amount being changed
 - [ ] User can set the background color of the counter
