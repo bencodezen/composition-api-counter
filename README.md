@@ -8,7 +8,7 @@
 - [x] User can increment the counter by 1
 - [x] User can determine the amount being changed
 - [x] User can set the background color of the counter
-- [ ] User can reset the counter
+- [x] User can reset the counter
 - [ ] User can delete a counter
 - [ ] User can see total count of all counters
 - [ ] User can see average count of all counters
