@@ -1,4 +1,4 @@
-# composition-api-counter
+# Composition API - Counter App
 
 ## Requirements
 
