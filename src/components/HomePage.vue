@@ -4,21 +4,26 @@
     <p v-if="counterList.length === 0">No counters exist.</p>
     <Counter
       v-else
-      v-for="(counter, index) in counterList"
+      v-for="({ id, name }, index) in counterList"
       :key="`counter-${index}`"
-      :counterId="counter"
+      :counterId="id"
+      :counterName="name"
     />
-    <button @click="createCounter">Create Counter</button>
+    <form class="counter-form" @submit.prevent>
+      <label for="new-counter-name">New Counter Name</label>
+      <input type="text" id="new-counter-name" v-model="newCounterName" />
+      <button @click="createCounter">Create Counter</button>
+    </form>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-import Counter from './Counter'
+import Counter from "./Counter";
 
 export default {
-  name: 'HomePage',
+  name: "HomePage",
   components: {
     Counter
   },
@@ -26,35 +31,40 @@ export default {
     msg: String
   },
   setup() {
-    const counterList = ref([])
+    const counterList = ref([]);
+    const newCounterName = ref("");
 
     const generateId = () => {
-      return Math.floor(Math.random() * Math.floor(1000000))
-    }
+      return Math.floor(Math.random() * Math.floor(1000000));
+    };
 
     const checkUniqueId = id => {
-      return counterList.value.includes(id)
-    }
+      return counterList.value.includes(id);
+    };
 
     const createCounter = () => {
       // Generate a random id
-      let newCounterId = generateId()
+      let newCounterId = generateId();
 
       // Verify that it is a unique id
       if (checkUniqueId(newCounterId)) {
         // TODO: Need to create loop to make sure it's actually unique
-        newCounterId = generateId()
+        newCounterId = generateId();
       } else {
-        counterList.value.push(newCounterId)
+        counterList.value.push({
+          id: newCounterId,
+          name: newCounterName
+        });
       }
-    }
+    };
 
     return {
       counterList,
-      createCounter
-    }
+      createCounter,
+      newCounterName
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -72,5 +82,19 @@ li {
 }
 a {
   color: #42b983;
+}
+.counter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid #222;
+  padding: 2rem 1rem 1.25rem;
+}
+
+.counter-form * {
+  margin-bottom: 1rem;
 }
 </style>

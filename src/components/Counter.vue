@@ -2,14 +2,19 @@
 export default {
   props: {
     counterId: {
-      type: Number
+      type: Number,
+      required: true
+    },
+    counterName: {
+      type: String,
+      required: true
     }
   }
-}
+};
 </script>
 
 <template>
-  <h1>My Counter #{{ counterId }}</h1>
+  <h1>#{{ counterId }}: {{ counterName }}</h1>
 </template>
 
 <style></style>
