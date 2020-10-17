@@ -22,6 +22,7 @@
       />
       <button @click="createCounter">Create Counter</button>
     </form>
+    <UserStats />
   </div>
 </template>
 
@@ -29,17 +30,21 @@
 import { ref } from "vue";
 
 import Counter from "./Counter";
+import UserStats from "./UserStats";
+
+import useStore from "../features/useStore";
 
 export default {
   name: "HomePage",
   components: {
-    Counter
+    Counter,
+    UserStats
   },
   props: {
     msg: String
   },
   setup() {
-    const counterList = ref([]);
+    const { counterList } = useStore;
     const newCounterName = ref("");
     const newCounterBgColor = ref("");
 
@@ -71,6 +76,7 @@ export default {
         counterList.value.push({
           id: newCounterId,
           name: newCounterName.value,
+          count: 0,
           bgColor: newCounterBgColor.value
         });
       }

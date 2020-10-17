@@ -1,5 +1,6 @@
 <script>
 import { ref } from "vue";
+import useStore from "../features/useStore";
 
 export default {
   props: {
@@ -19,6 +20,7 @@ export default {
   setup(props, context) {
     const currentCount = ref(0);
     const changeCountAmount = ref(1);
+    const { updateCount } = useStore;
 
     const deleteCounter = () => {
       context.emit("delete-counter", {
@@ -28,6 +30,10 @@ export default {
 
     const incrementCount = () => {
       currentCount.value += changeCountAmount.value;
+      updateCount({
+        id: props.counterId,
+        count: currentCount.value
+      });
     };
 
     const resetCount = () => {

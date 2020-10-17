@@ -10,7 +10,7 @@
 - [x] User can set the background color of the counter
 - [x] User can reset the counter
 - [x] User can delete a counter
-- [ ] User can see total count of all counters
+- [x] User can see total count of all counters
 - [ ] User can see average count of all counters
 
 ## Project setup
