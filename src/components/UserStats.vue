@@ -16,7 +16,13 @@ export default {
       return counterList.value.length;
     });
 
-    const averageCount = totalCount.value / numberOfCounters.value;
+    const averageCount = computed(() => {
+      if (counterList.value.length > 0) {
+        return totalCount.value / numberOfCounters.value;
+      } else {
+        return 0;
+      }
+    });
 
     return {
       averageCount,
