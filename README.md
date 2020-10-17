@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- [ ] User can see an empty state
+- [x] User can see an empty state
 - [ ] User can add a new counter
 - [ ] User can set a name for the counter
 - [ ] User can increment the counter by 1
