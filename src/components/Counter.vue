@@ -3,6 +3,10 @@ import { ref } from "vue";
 
 export default {
   props: {
+    counterBgColor: {
+      type: String,
+      default: "#fff"
+    },
     counterId: {
       type: Number,
       required: true
@@ -30,21 +34,39 @@ export default {
 </script>
 
 <template>
-  <section class="counter-wrapper">
+  <section
+    class="counter-wrapper"
+    :style="`background-color: ${counterBgColor}`"
+  >
     <h1>#{{ counterId }}: {{ counterName }}</h1>
     <p class="current-count">Count: {{ currentCount }}</p>
-    <label for="change-count-amount">Change Count Amount</label>
-    <input
-      type="number"
-      id="change-count-amount"
-      v-model.number="changeCountAmount"
-    />
-    <p>{{ changeCountAmount }}</p>
+    <form class="counter-form" @submit.prevent>
+      <label for="change-count-amount">Change Count Amount</label>
+      <input
+        type="number"
+        id="change-count-amount"
+        v-model.number="changeCountAmount"
+      />
+    </form>
     <button @click="incrementCount">Increment Count</button>
   </section>
 </template>
 
 <style>
+.counter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+  padding: 1rem 1rem 1.25rem;
+}
+
+.counter-form * {
+  margin-bottom: 1rem;
+}
+
 .counter-wrapper {
   border: 5px solid #222;
   padding: 2rem;

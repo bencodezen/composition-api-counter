@@ -4,14 +4,21 @@
     <p v-if="counterList.length === 0">No counters exist.</p>
     <Counter
       v-else
-      v-for="({ id, name }, index) in counterList"
+      v-for="({ bgColor, id, name }, index) in counterList"
       :key="`counter-${index}`"
       :counterId="id"
       :counterName="name"
+      :counterBgColor="bgColor"
     />
     <form class="counter-form" @submit.prevent>
       <label for="new-counter-name">New Counter Name</label>
       <input type="text" id="new-counter-name" v-model="newCounterName" />
+      <label for="new-counter-bgcolor">New Counter Background Color</label>
+      <input
+        type="color"
+        id="new-counter-bgcolor"
+        v-model="newCounterBgColor"
+      />
       <button @click="createCounter">Create Counter</button>
     </form>
   </div>
@@ -33,6 +40,7 @@ export default {
   setup() {
     const counterList = ref([]);
     const newCounterName = ref("");
+    const newCounterBgColor = ref("");
 
     const generateId = () => {
       return Math.floor(Math.random() * Math.floor(1000000));
@@ -53,7 +61,8 @@ export default {
       } else {
         counterList.value.push({
           id: newCounterId,
-          name: newCounterName
+          name: newCounterName.value,
+          bgColor: newCounterBgColor.value
         });
       }
     };
@@ -61,7 +70,8 @@ export default {
     return {
       counterList,
       createCounter,
-      newCounterName
+      newCounterName,
+      newCounterBgColor
     };
   }
 };
