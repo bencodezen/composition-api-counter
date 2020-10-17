@@ -1,4 +1,4 @@
-# Composition API - Counter App
+# composition-api-counter
 
 ## Requirements
 
@@ -12,3 +12,31 @@
 - [ ] User can delete a counter
 - [ ] User can see total count of all counters
 - [ ] User can see average count of all counters
+
+## Project setup
+
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+
+```
+yarn build
+```
+
+### Lints and fixes files
+
+```
+yarn lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
