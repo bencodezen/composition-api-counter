@@ -9,6 +9,7 @@
       :counterId="id"
       :counterName="name"
       :counterBgColor="bgColor"
+      @delete-counter="deleteCounter"
     />
     <form class="counter-form" @submit.prevent>
       <label for="new-counter-name">New Counter Name</label>
@@ -42,6 +43,14 @@ export default {
     const newCounterName = ref("");
     const newCounterBgColor = ref("");
 
+    const deleteCounter = payload => {
+      const targetIndex = counterList.value.findIndex(
+        counter => counter.id == payload.id
+      );
+
+      counterList.value.splice(targetIndex, 1);
+    };
+
     const generateId = () => {
       return Math.floor(Math.random() * Math.floor(1000000));
     };
@@ -70,6 +79,7 @@ export default {
     return {
       counterList,
       createCounter,
+      deleteCounter,
       newCounterName,
       newCounterBgColor
     };

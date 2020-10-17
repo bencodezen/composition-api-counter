@@ -16,9 +16,15 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props, context) {
     const currentCount = ref(0);
     const changeCountAmount = ref(1);
+
+    const deleteCounter = () => {
+      context.emit("delete-counter", {
+        id: props.counterId
+      });
+    };
 
     const incrementCount = () => {
       currentCount.value += changeCountAmount.value;
@@ -31,6 +37,7 @@ export default {
     return {
       changeCountAmount,
       currentCount,
+      deleteCounter,
       incrementCount,
       resetCount
     };
@@ -55,6 +62,7 @@ export default {
     </form>
     <button @click="incrementCount">Increment Count</button>
     <button @click="resetCount">Reset Count</button>
+    <button @click="deleteCounter">Delete Counter</button>
   </section>
 </template>
 
