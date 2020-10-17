@@ -12,7 +12,14 @@ export default {
       }, 0);
     });
 
+    const numberOfCounters = computed(() => {
+      return counterList.value.length;
+    });
+
+    const averageCount = totalCount.value / numberOfCounters.value;
+
     return {
+      averageCount,
       counterList,
       totalCount
     };
@@ -23,7 +30,7 @@ export default {
 <template>
   <h1>User Stats</h1>
   <p>Total Count: {{ totalCount }}</p>
-  <p>Average Count:</p>
+  <p>Average Count: {{ averageCount }}</p>
 </template>
 
 <style></style>

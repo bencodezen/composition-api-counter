@@ -11,7 +11,7 @@
 - [x] User can reset the counter
 - [x] User can delete a counter
 - [x] User can see total count of all counters
-- [ ] User can see average count of all counters
+- [x] User can see average count of all counters
 
 ## Project setup
 
